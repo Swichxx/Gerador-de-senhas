@@ -1,33 +1,126 @@
-let sliderElement = document.querySelector("#slider");
-let buttonElement = document.querySelector("#button");
+:root{
+    --color-black-: #18181b;
+    --color-black2-: #222222;
+    --color-white-: #dfdfdf;
+    --color-white2-: #fff;
+    --color-green-: #3EB72B;
+}
 
-let sizePassword = document.querySelector("#valor");
-let password = document.querySelector("#password");
 
-let conteinerPassword = document.querySelector("#container-password");
+*{
+    font-family: sans-serif;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
-let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!';
-let novaSenha = "";
+body{
+    background-color: var(--color-black-);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-sizePassword.innerHTML = sliderElement.value;
+.logo{
+    max-width: 600px;
+    margin-bottom: 24px;
 
-slider.oninput = function() {
-    sizePassword.innerHTML = this.value;
-  }
+}
 
-function generatePassword(){ 
-    let pass = ""
-    for(let i = 0, n = charset.length; i < sliderElement.value; ++i){
-        pass += charset.charAt(Math.floor(Math.random() * n));
-      }
-      console.log;
-    conteinerPassword.classList.remove("hide");
-    pass.innerHTML = pass;
-    password.innerHTML = pass;
-    novaSenha = pass;
-    }
+.container-input{
+    max-width: 480px;
+    margin: 14px 0px;
 
-    function copyPassword(){
-        alert("Senha copiada com sucesso!")
-        navigator.clipboard.writeText(novaSenha);
-      }
+}
+
+.container-input span{
+    color: white;
+    font-size: 22px;
+
+}
+
+#slider{
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 5px;
+    background-color:var(--color-white-);
+    height: 18px;
+    outline: none;
+    margin-top: 8px;
+}
+
+.button-cta{
+    height: 40px;
+    background-color:var(--color-green-);
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    color:var(--color-white2-);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.container-password{
+    max-width: 480px;
+    margin: 14px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.title{
+    text-align: center;
+    color: var(--color-white-);
+    font-size: 28px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+}
+
+.password{
+    height: 60px;
+    background-color: var(--color-black2-);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white2-);
+    border: 1px solid var(--color-white2-);
+    transition: .4s;
+}
+
+
+.password:hover{
+    transform: scale(1.05);
+}
+
+.tooltip{
+    color: var(--color-white2-);
+    position: relative;
+    top: 20px;
+    padding: 6px 8px;
+    background-color: var(--color-black2-);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 6px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.hide{
+    display: none;
+}
+
+
+.container-password:hover .tooltip{
+    visibility: visible;
+    bottom: 50px;
+    opacity: 1;
+}
